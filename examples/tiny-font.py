@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+import time
+from microdotphat import draw_tiny, update, clear
+
+x = 0
+
+while True:
+    clear()
+    draw_tiny(0,"192")
+    draw_tiny(1,"178")
+    draw_tiny(2,"0")
+    draw_tiny(3,"68")
+    draw_tiny(4,str(x))
+
+    x += 1
+    if x > 199: x = 0
+    update()
+    time.sleep(0.1)
