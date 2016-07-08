@@ -108,6 +108,10 @@ def scroll_horizontal(amount=1):
 def scroll_vertical(amount=1):
     scroll(amount_x=0, amount_y=amount)
 
+def set_brightness(brightness):
+    for m_x in range(6):
+        mat[m_x][0].set_brightness(brightness)
+
 def show():
     scrolled_buffer = numpy.roll(buf, -scroll_x, axis=1)
     scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_y, axis=0)
