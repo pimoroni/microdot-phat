@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from time import sleep
 from random import randint
-from microdotphat import set_col, update, clear
+from microdotphat import set_col, show, clear
 
 graph = []
 filled = True
@@ -26,5 +26,5 @@ while True:
         else:
             set_col(x, 1 << (7-val))
 
-    update()
+    show()
     sleep(0.05)

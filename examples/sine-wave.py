@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import time
 import math
-from microdotphat import clear, set_pixel, update 
+from microdotphat import clear, set_pixel, show 
 
 while True:
     clear()
@@ -10,5 +10,5 @@ while True:
         y = int((math.sin(t + (x/2.5)) + 1) * 3.5)
         set_pixel(x, y, 1)
         
-    update()
+    show()
     time.sleep(0.01)
