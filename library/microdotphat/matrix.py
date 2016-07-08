@@ -47,15 +47,22 @@ class NanoMatrix:
 
     def __init__(self, address=ADDR):
         self.address = address
+        self._brightness = 127
 
         self.bus = smbus.SMBus(1)
 
         self.bus.write_byte_data(self.address, CMD_MODE, MODE)
         self.bus.write_byte_data(self.address, CMD_OPTIONS, OPTS)
-        self.bus.write_byte_data(self.address, CMD_BRIGHTNESS, 127)
+        self.bus.write_byte_data(self.address, CMD_BRIGHTNESS, self._brightness)
 
         self._BUF_MATRIX_1 = [0] * 8
         self._BUF_MATRIX_2 = [0] * 8
+
+    def set_brightness(self, brightness):
+        self._brightness = int(brightness * 127)
+        if self._brightness > 127: self._brightness = 127
+
+        self.bus.write_byte_data(self.address, CMD_BRIGHTNESS, self._brightness)
 
     def set_decimal(self, m, c):
 
