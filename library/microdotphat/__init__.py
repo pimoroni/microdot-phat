@@ -51,7 +51,7 @@ def set_pixel(x, y, c):
             buf = numpy.pad(buf, ((0,0),(0,x - buf.shape[1] + 1)), mode='constant')
         buf[y][x] = c
 
-def set_char(char, offset_x=0, offset_y=0):
+def write_char(char, offset_x=0, offset_y=0):
     char = font[ord(char) - 32]
     for x in range(5):
         for y in range(7):
@@ -61,22 +61,34 @@ def set_char(char, offset_x=0, offset_y=0):
 def _get_char(char):
     return font[ord(char) - 32]
 
-def write_string(string, offset_x=0, offset_y=0):
+def write_string(string, offset_x=0, offset_y=0, kerning=True):
     str_buf = []
+
+    space = [0x00] * 5
+    gap = [0x00] * 3
+
+    if kerning:
+        space = [0x00] * 2
+        gap = [0x00]
+
     for char in string:
         if char == ' ':
-            str_buf += [0x00, 0x00]
+            str_buf += space
         else:
-            char_data = numpy.trim_zeros(numpy.array(_get_char(char)))
+            char_data = numpy.array(_get_char(char))
+            if kerning:
+                char_data = numpy.trim_zeros(char_data)
             str_buf += list(char_data)
-        str_buf += [0x00] # Gap between chars
+        str_buf += gap # Gap between chars
 
     for x in range(len(str_buf)):
         for y in range(7):
             p = (str_buf[x] & (1 << y)) > 0
             set_pixel(offset_x + x, offset_y + y, p)
 
+    l = len(str_buf)
     del str_buf
+    return l
 
 def scroll(amount_x=1, amount_y=0):
     global scroll_x, scroll_y
@@ -85,11 +97,20 @@ def scroll(amount_x=1, amount_y=0):
     scroll_x %= buf.shape[1]
     scroll_y %= buf.shape[0]
 
+def scroll_to(position_x=0, position_y=0):
+    global scroll_x, scroll_y
+    scroll_x = position_x % buf.shape[1]
+    scroll_y = position_y % buf.shape[0]
+
 def scroll_horizontal(amount=1):
     scroll(amount_x=amount, amount_y=0)
 
 def scroll_vertical(amount=1):
     scroll(amount_x=0, amount_y=amount)
+
+def set_brightness(brightness):
+    for m_x in range(6):
+        mat[m_x][0].set_brightness(brightness)
 
 def show():
     scrolled_buffer = numpy.roll(buf, -scroll_x, axis=1)
