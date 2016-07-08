@@ -64,7 +64,7 @@ If you wanted to scroll the message "In the old #BILGETANK we'll keep you in the
 from microdotphat import write_string, scroll, show
 import time
 
-write_string(0, "In the old #BILGETANK we'll keep you in the know!      ")
+write_string("In the old #BILGETANK we'll keep you in the know!      ", origin_x=0, origin_y=0)
 
 while True:
     scroll()
@@ -74,7 +74,7 @@ while True:
 
 We import the `write_string`, `scroll` and `show` functions, as well as the `time` library so that we can add a small delay to set the scrolling speed.
 
-Then, we call the `write_string` function, with the `0` parameter being the start position at which we'll write the string (the left-most pixel), and passing in our text with a few spaces padded onto the end.
+Then, we call the `write_string` function, with the `origin_x=0` and `origin_y=0` parameters being the start position at which we'll write the string (the top left-most pixel), and passing in our text with a few spaces padded onto the end.
 
 If we called `show` now, that text would be written to the matrices, but we also want to scroll the text. To do that, we can call the `scroll` and `show` functions in a `while True` loop.
 
