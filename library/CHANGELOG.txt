@@ -1,4 +1,6 @@
 Changelog
 ---------
 
+0.1.0 - Vertical scrolling, new scrolling methods, tweaks to write_string
+
 0.0.1 - Initial Release
