@@ -1,8 +1,8 @@
-![Micro Dot pHAT](micro-dot-phat-logo.png)
+![Micro Dot pHAT](microdot-phat-logo.png)
 
 An unashamedly old school LED matrix display board, with up to 30x7 pixels, using the Lite-On LTP-305 matrices. Use between 1 and 6 matrices in your choice of red and/or green. Perfect for building a retro scrolling message display or a tiny 30 band spectrum analyser.
 
-<!-- Available from Pimoroni: https://shop.pimoroni.com/products/micro-dot-phat
+<!-- Available from Pimoroni: https://shop.pimoroni.com/products/micro-dot-phat -->
 
 ##Installation
 
@@ -16,7 +16,7 @@ In the new terminal window type:
 curl -sS get.pimoroni.com/microdotphat | bash
 ```
 
-If you choose to download examples you'll find them in `/home/pi/Pimoroni/microdotphat`. -->
+If you choose to download examples you'll find them in `/home/pi/Pimoroni/microdotphat/examples`.
 
 ##Usage
 
@@ -86,4 +86,4 @@ If we called `update` now, that text would be written to the matrices, but we al
 
 There are a number of examples in the [examples](examples) folder that illustrate the above concepts.
 
-If you've used the one-line installer and chosen to download the examples, these will be in the `/home/pi/Pimoroni/microdotphat` directory.
+If you've used the one-line installer and chosen to download the examples, these will be in the `/home/pi/Pimoroni/microdotphat/examples` directory.
