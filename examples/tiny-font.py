@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import time
-from microdotphat import draw_tiny, update, clear
+from microdotphat import draw_tiny, show, clear
 
 x = 0
 
@@ -14,5 +14,5 @@ while True:
 
     x += 1
     if x > 199: x = 0
-    update()
+    show()
     time.sleep(0.1)

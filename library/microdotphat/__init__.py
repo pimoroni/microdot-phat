@@ -3,6 +3,7 @@ from .matrix import NanoMatrix
 from .font import font, tinynumbers
 import time
 import math
+import atexit
 
 n1 = NanoMatrix(address=0x63)
 n2 = NanoMatrix(address=0x62)
@@ -14,6 +15,18 @@ WIDTH = 45
 HEIGHT = 7
 
 buf = numpy.zeros((HEIGHT,WIDTH))
+scroll_x = 0
+scroll_y = 0
+
+clear_on_exit = True
+
+def _exit():
+    global buf
+    if clear_on_exit:
+        buf.fill(0)
+        show()
+
+atexit.register(_exit)
 
 def clear():
     global buf
@@ -32,44 +45,58 @@ def set_pixel(x, y, c):
     try:
         buf[y][x] = c
     except IndexError:
-        buf = numpy.pad(buf, ((0,0),(0,x - buf.shape[1] + 1)), mode='constant')
+        if y >= buf.shape[0]:
+            buf = numpy.pad(buf, ((0,y - buf.shape[0] + 1),(0,0)), mode='constant')
+        if x >= buf.shape[1]:
+            buf = numpy.pad(buf, ((0,0),(0,x - buf.shape[1] + 1)), mode='constant')
         buf[y][x] = c
 
-def set_char(o_x, char):
+def set_char(char, offset_x=0, offset_y=0):
     char = font[ord(char) - 32]
     for x in range(5):
         for y in range(7):
             p = (char[x] & (1 << y)) > 0
-            set_pixel(o_x + x, y, p)
+            set_pixel(offset_x + x, offset_y + y, p)
 
-def get_char(char):
+def _get_char(char):
     return font[ord(char) - 32]
 
-def write_string(o_x, string):
+def write_string(string, offset_x=0, offset_y=0):
     str_buf = []
     for char in string:
         if char == ' ':
             str_buf += [0x00, 0x00]
         else:
-            char_data = numpy.trim_zeros(numpy.array(get_char(char)))
+            char_data = numpy.trim_zeros(numpy.array(_get_char(char)))
             str_buf += list(char_data)
         str_buf += [0x00] # Gap between chars
 
     for x in range(len(str_buf)):
         for y in range(7):
             p = (str_buf[x] & (1 << y)) > 0
-            set_pixel(o_x + x, y, p)
+            set_pixel(offset_x + x, offset_y + y, p)
 
     del str_buf
 
-def scroll():
-    global buf
-    buf = numpy.roll(buf, -1, axis=1)
+def scroll(amount_x=1, amount_y=0):
+    global scroll_x, scroll_y
+    scroll_x += amount_x
+    scroll_y += amount_y
+    scroll_x %= buf.shape[1]
+    scroll_y %= buf.shape[0]
 
-def update():
+def scroll_horizontal(amount=1):
+    scroll(amount_x=amount, amount_y=0)
+
+def scroll_vertical(amount=1):
+    scroll(amount_x=0, amount_y=amount)
+
+def show():
+    scrolled_buffer = numpy.roll(buf, -scroll_x, axis=1)
+    scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_y, axis=0)
     for m_x in range(6):
         x = (m_x * 8)
-        b = buf[0:7, x:x+5]
+        b = scrolled_buffer[0:7, x:x+5]
         for x in range(5):
             for y in range(7):
                  try:
