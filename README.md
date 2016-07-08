@@ -1,6 +1,6 @@
 ![Micro Dot pHAT](micro-dot-phat-logo.png)
 
-An unashamedly old school LED matrix display board, with up to 30x7 pixels, using the Lite-On LTP-305 matrices. Use from 1 to 6 matrices in your choice of red and/or green. Perfect for building a retro scrolling message display or a tiny 30 band spectrum analyser.
+An unashamedly old school LED matrix display board, with up to 30x7 pixels, using the Lite-On LTP-305 matrices. Use between 1 and 6 matrices in your choice of red and/or green. Perfect for building a retro scrolling message display or a tiny 30 band spectrum analyser.
 
 <!-- Available from Pimoroni: https://shop.pimoroni.com/products/micro-dot-phat
 
