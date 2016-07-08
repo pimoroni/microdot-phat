@@ -1,0 +1,4 @@
+include CHANGELOG.txt
+include README.md
+include setup.py
+include microdotphat/*
