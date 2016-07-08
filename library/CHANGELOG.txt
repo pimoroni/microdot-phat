@@ -1,6 +1,8 @@
 Changelog
 ---------
 
+0.1.1 - Added set_brightness, range from 0.0 to 1.0
+
 0.1.0 - Vertical scrolling, new scrolling methods, tweaks to write_string
 
 0.0.1 - Initial Release
