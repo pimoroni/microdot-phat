@@ -11,7 +11,7 @@ n3 = NanoMatrix(address=0x61)
 
 mat = [(n1, 1), (n1, 0), (n2, 1), (n2, 0), (n3, 1), (n3, 0)]
 
-WIDTH = 48
+WIDTH = 45
 HEIGHT = 7
 
 buf = numpy.zeros((HEIGHT,WIDTH))
@@ -70,7 +70,7 @@ def write_string(string, offset_x=0, offset_y=0):
             char_data = numpy.trim_zeros(numpy.array(_get_char(char)))
             str_buf += list(char_data)
         str_buf += [0x00] # Gap between chars
-    
+
     for x in range(len(str_buf)):
         for y in range(7):
             p = (str_buf[x] & (1 << y)) > 0
@@ -106,7 +106,7 @@ def show():
         del b
     for m_x in range(0,6,2):
         mat[m_x][0].update()
-             
+
 def draw_tiny(display, text):
     buf = []
     for num in [int(x) for x in text]:
