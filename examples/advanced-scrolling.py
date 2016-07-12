@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from microdotphat import WIDTH, HEIGHT, set_pixel, write_string, scroll, scroll_to, show
 import time
 
