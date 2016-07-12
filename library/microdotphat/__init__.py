@@ -15,6 +15,8 @@ WIDTH = 45
 HEIGHT = 7
 
 buf = numpy.zeros((HEIGHT,WIDTH))
+decimal = [0] * 6
+
 scroll_x = 0
 scroll_y = 0
 
@@ -29,7 +31,8 @@ def _exit():
 atexit.register(_exit)
 
 def clear():
-    global buf
+    global buf, decimal
+    decimal = [0] * 6
     buf.fill(0)
 
 def fill(c):
@@ -60,6 +63,11 @@ def write_char(char, offset_x=0, offset_y=0):
 
 def _get_char(char):
     return font[ord(char) - 32]
+
+def set_decimal(index, state):
+    global decimal
+    if index in range(6):
+        decimal[index] = 1 if state else 0
 
 def write_string(string, offset_x=0, offset_y=0, kerning=True):
     str_buf = []
@@ -118,6 +126,9 @@ def show():
     for m_x in range(6):
         x = (m_x * 8)
         b = scrolled_buffer[0:7, x:x+5]
+
+        mat[m_x][0].set_decimal(mat[m_x][1], decimal[m_x])
+
         for x in range(5):
             for y in range(7):
                  try:
