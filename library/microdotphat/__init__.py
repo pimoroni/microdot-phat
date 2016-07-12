@@ -20,12 +20,12 @@ decimal = [0] * 6
 scroll_x = 0
 scroll_y = 0
 
-clear_on_exit = True
+_clear_on_exit = True
+_rotate180 = False
 
 def _exit():
-    global buf
-    if clear_on_exit:
-        buf.fill(0)
+    if _clear_on_exit:
+        clear()
         show()
 
 atexit.register(_exit)
@@ -38,6 +38,14 @@ def clear():
 def fill(c):
     global buf
     buf.fill(c)
+
+def set_clear_on_exit(value):
+    global _clear_on_exit
+    _clear_on_exit = (value == True)
+
+def set_rotate180(value):
+    global _rotate180
+    _rotate180 = (value == True)
 
 def set_col(x, col):
     for y in range(7):
@@ -121,8 +129,13 @@ def set_brightness(brightness):
         mat[m_x][0].set_brightness(brightness)
 
 def show():
-    scrolled_buffer = numpy.roll(buf, -scroll_x, axis=1)
+    scrolled_buffer = numpy.copy(buf)
+    scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_x, axis=1)
     scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_y, axis=0)
+
+    if _rotate180:
+        scrolled_buffer = numpy.rot90(scrolled_buffer[:7, :45], 2)
+
     for m_x in range(6):
         x = (m_x * 8)
         b = scrolled_buffer[0:7, x:x+5]
