@@ -15,26 +15,37 @@ WIDTH = 45
 HEIGHT = 7
 
 buf = numpy.zeros((HEIGHT,WIDTH))
+decimal = [0] * 6
+
 scroll_x = 0
 scroll_y = 0
 
-clear_on_exit = True
+_clear_on_exit = True
+_rotate180 = False
 
 def _exit():
-    global buf
-    if clear_on_exit:
-        buf.fill(0)
+    if _clear_on_exit:
+        clear()
         show()
 
 atexit.register(_exit)
 
 def clear():
-    global buf
+    global buf, decimal
+    decimal = [0] * 6
     buf.fill(0)
 
 def fill(c):
     global buf
     buf.fill(c)
+
+def set_clear_on_exit(value):
+    global _clear_on_exit
+    _clear_on_exit = (value == True)
+
+def set_rotate180(value):
+    global _rotate180
+    _rotate180 = (value == True)
 
 def set_col(x, col):
     for y in range(7):
@@ -60,6 +71,11 @@ def write_char(char, offset_x=0, offset_y=0):
 
 def _get_char(char):
     return font[ord(char) - 32]
+
+def set_decimal(index, state):
+    global decimal
+    if index in range(6):
+        decimal[index] = 1 if state else 0
 
 def write_string(string, offset_x=0, offset_y=0, kerning=True):
     str_buf = []
@@ -113,11 +129,19 @@ def set_brightness(brightness):
         mat[m_x][0].set_brightness(brightness)
 
 def show():
-    scrolled_buffer = numpy.roll(buf, -scroll_x, axis=1)
+    scrolled_buffer = numpy.copy(buf)
+    scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_x, axis=1)
     scrolled_buffer = numpy.roll(scrolled_buffer, -scroll_y, axis=0)
+
+    if _rotate180:
+        scrolled_buffer = numpy.rot90(scrolled_buffer[:7, :45], 2)
+
     for m_x in range(6):
         x = (m_x * 8)
         b = scrolled_buffer[0:7, x:x+5]
+
+        mat[m_x][0].set_decimal(mat[m_x][1], decimal[m_x])
+
         for x in range(5):
             for y in range(7):
                  try:

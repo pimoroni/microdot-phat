@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import time
 import math
 from microdotphat import clear, show, set_pixel, WIDTH, HEIGHT

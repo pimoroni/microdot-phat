@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from microdotphat import write_string, scroll, show
 import time
              

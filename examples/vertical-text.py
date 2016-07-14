@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from microdotphat import HEIGHT, write_string, scroll_vertical, show
 import time
              
