@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+0.1.2 - Added set_decimal for toggling decimal places
+        Changed clear_on_exit = True to set_clear_on_exit(True)
+        Added support for 180 degree rotation; set_rotate180(True)
+
 0.1.1 - Added set_brightness, range from 0.0 to 1.0
 
 0.1.0 - Vertical scrolling, new scrolling methods, tweaks to write_string
