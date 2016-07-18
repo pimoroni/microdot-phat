@@ -1,0 +1,27 @@
+microdotphat (0.1.2) UNRELEASED; urgency=low
+
+  * Added set_decimal for toggling decimal places
+  * Replaced clear_on_exit with set_clear_on_exit method
+  * Added support for 180 degree rotation
+
+ -- Phil Howard <phil@pimoroni.com>  Tue, 12 Jul 2016 00:00:00 +0000
+
+microdotphat (0.1.1) UNRELEASED; urgency=low
+
+  * Added set_brightness
+
+ -- Phil Howard <phil@pimoroni.com>  Sat, 9 Jul 2016 00:00:00 +0000
+
+microdotphat (0.1.0) UNRELEASED; urgency=low
+
+  * Vertical scrolling
+  * Tweaks to write_string
+
+ -- Phil Howard <phil@pimoroni.com>  Fri, 8 Jul 2016 00:00:00 +0000
+ 
+
+microdotphat (0.0.1) UNRELEASED; urgency=low
+
+  * Initial Release
+
+ -- Phil Howard <phil@pimoroni.com>  Thu, 7 Jul 2016 00:00:00 +0000
