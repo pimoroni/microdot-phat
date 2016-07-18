@@ -11,7 +11,7 @@ X-Python3-Version: >= 3.4
 Package: python-microdotphat
 Architecture: all
 Section: python
-Depends: ${misc:Depends}, ${python:Depends}, python-smbus python-numpy
+Depends: ${misc:Depends}, ${python:Depends}, python-smbus, python-numpy
 Suggests: i2c-tools
 Description: python library designed to control Micro Dot pHAT.
  The Micro Dot pHAT is an unashamedly old school LED matrix display board,
@@ -22,7 +22,7 @@ Description: python library designed to control Micro Dot pHAT.
 Package: python3-microdotphat
 Architecture: all
 Section: python
-Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus python3-numpy
+Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus, python3-numpy
 Suggests: i2c-tools
 Description: python library designed to control Micro Dot pHAT.
  The Micro Dot pHAT is an unashamedly old school LED matrix display board,
