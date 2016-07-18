@@ -1,0 +1,12 @@
+README
+
+The Micro Dot pHAT is an unashamedly old school LED matrix display board, with up to 30x7 pixels, using the Lite-On LTP-305 matrices. Perfect for building a retro scrolling message display or a tiny 30 band spectrum analyser.
+
+Learn more: https://shop.pimoroni.com/products/microdot-phat
+For examples run: `curl -sS get.pimoroni.com/microdotphat | bash`
+
+IMPORTANT
+
+Micro Dot pHAT requires i2c.
+To enable run `curl get.pimoroni.com/i2c | bash`
+or use raspi-config and reboot your Raspberry Pi.
