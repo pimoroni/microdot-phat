@@ -1,0 +1,31 @@
+Source: microdotphat
+Maintainer: Phil Howard <phil@pimoroni.com>
+Homepage: https://github.com/pimoroni/microdot-phat
+Section: python
+Priority: optional
+Build-Depends: debhelper (>= 9.0.0), dh-python, python-all (>= 2.7), python-setuptools, python3-all (>= 3.4), python3-setuptools
+Standards-Version: 3.9.6
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.4
+
+Package: python-microdotphat
+Architecture: all
+Section: python
+Depends: ${misc:Depends}, ${python:Depends}, python-smbus, python-numpy
+Suggests: i2c-tools
+Description: python library designed to control Micro Dot pHAT.
+ The Micro Dot pHAT is an unashamedly old school LED matrix display board,
+ with up to 30x7 pixels, using the Lite-On LTP-305 matrices.
+ .
+ This is the Python 2 version of the package.
+
+Package: python3-microdotphat
+Architecture: all
+Section: python
+Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus, python3-numpy
+Suggests: i2c-tools
+Description: python library designed to control Micro Dot pHAT.
+ The Micro Dot pHAT is an unashamedly old school LED matrix display board,
+ with up to 30x7 pixels, using the Lite-On LTP-305 matrices.
+ .
+ This is the Python 3 version of the package.
