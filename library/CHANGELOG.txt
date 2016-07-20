@@ -1,12 +1,25 @@
-Changelog
----------
+0.1.2
+-----
 
-0.1.2 - Added set_decimal for toggling decimal places
-        Changed clear_on_exit = True to set_clear_on_exit(True)
-        Added support for 180 degree rotation; set_rotate180(True)
+* Added set_decimal for toggling decimal places
+* Replaced clear_on_exit with set_clear_on_exit method
+* Added support for 180 degree rotation
 
-0.1.1 - Added set_brightness, range from 0.0 to 1.0
+0.1.1
+-----
 
-0.1.0 - Vertical scrolling, new scrolling methods, tweaks to write_string
+* Added set_brightness
 
-0.0.1 - Initial Release
+0.1.0
+-----
+
+* Vertical scrolling
+* Tweaks to write_string
+
+ 
+
+0.0.1
+-----
+
+* Initial Release
+
