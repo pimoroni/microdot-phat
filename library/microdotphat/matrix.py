@@ -1,4 +1,7 @@
-import smbus
+try:
+    import smbus
+except ImportError:
+    exit("This library requires the smbus module\nInstall with: sudo apt-get install python-smbus")
 
 ADDR = 0x61
 MODE = 0b00011000

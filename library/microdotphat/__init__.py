@@ -1,9 +1,11 @@
-import numpy
+try:
+    import numpy
+except ImportError:
+    exit("This library requires the numpy module\nInstall with: sudo pip install numpy")
+
+import time, math, atexit
 from .matrix import NanoMatrix
 from .font import font, tinynumbers
-import time
-import math
-import atexit
 
 n1 = NanoMatrix(address=0x63)
 n2 = NanoMatrix(address=0x62)
