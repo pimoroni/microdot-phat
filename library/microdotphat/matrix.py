@@ -3,6 +3,7 @@ try:
 except ImportError:
     exit("This library requires the smbus module\nInstall with: sudo apt-get install python-smbus")
 
+
 ADDR = 0x61
 MODE = 0b00011000
 OPTS = 0b00001110 # 1110 = 35mA, 0000 = 40mA
