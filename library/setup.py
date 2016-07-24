@@ -51,5 +51,5 @@ setup(
     py_modules      = [],
     packages        = ['microdotphat'],
     include_package_data = True,
-    install_requires= []
+    install_requires= [ 'numpy' ]
 )
