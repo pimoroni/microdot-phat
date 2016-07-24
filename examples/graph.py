@@ -2,7 +2,9 @@
 
 from time import sleep
 from random import randint
+
 from microdotphat import set_col, show, clear
+
 
 graph = []
 filled = True

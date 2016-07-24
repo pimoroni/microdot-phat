@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-from microdotphat import WIDTH, HEIGHT, set_pixel, write_string, scroll, scroll_to, show
 import time
+
+from microdotphat import WIDTH, HEIGHT, set_pixel, write_string, scroll, scroll_to, show
+
 
 rewind = True
 delay = 0.03
