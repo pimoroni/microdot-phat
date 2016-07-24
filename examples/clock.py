@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import time
 import datetime
+import time
+
 from microdotphat import write_string, set_decimal, clear, show
+
 
 while True:
     clear()

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import time
+
 from microdotphat import draw_tiny, show, clear
+
 
 x = 0
 
