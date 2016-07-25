@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-from microdotphat import write_string, scroll, show
 import time
 import sys
              
+from microdotphat import write_string, scroll, show
+
+
 text = "In the old #BILGETANK we'll keep you in the know!      "
 
 if len(sys.argv) > 1:

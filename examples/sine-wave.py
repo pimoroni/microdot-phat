@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-import time
 import math
+import time
+
 from microdotphat import clear, set_pixel, show 
+
 
 while True:
     clear()

@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 import time
-import math
+
 from microdotphat import clear, show, set_decimal, set_pixel, WIDTH, HEIGHT
+
 
 t = 0.5
 
