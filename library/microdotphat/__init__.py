@@ -71,7 +71,7 @@ def set_clear_on_exit(value):
     your Python script exits.
 
     Arguments:
-    value Whether the display should be cleared on exit: True/False
+    value -- Whether the display should be cleared on exit: True/False
 
     """
 
