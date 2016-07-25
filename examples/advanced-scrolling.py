@@ -5,6 +5,14 @@ import time
 from microdotphat import WIDTH, HEIGHT, set_pixel, write_string, scroll, scroll_to, show
 
 
+print("""Advanced Scrolling
+
+Advanced scrolling example which displays a message line-by-line
+and then skips back to the beginning.
+
+Press Ctrl+C to exit.
+""")
+
 rewind = True
 delay = 0.03
 

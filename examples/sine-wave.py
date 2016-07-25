@@ -5,6 +5,12 @@ import time
 
 from microdotphat import clear, set_pixel, show 
 
+print("""Sine Wave
+
+Displays a sine wave across your pHAT.
+
+Press Ctrl+C to exit.
+""")
 
 while True:
     clear()

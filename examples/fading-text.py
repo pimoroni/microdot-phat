@@ -5,6 +5,10 @@ import time
 
 from microdotphat import clear, set_brightness, show, write_string, WIDTH, HEIGHT
 
+print("""Fading Text
+
+Uses the brightness control to fade between messages.
+""")
 
 speed = 5
 strings = ["One", "Two", "Three", "Four"]
