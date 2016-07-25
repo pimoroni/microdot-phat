@@ -129,8 +129,8 @@ def write_char(char, offset_x=0, offset_y=0):
 
     Arguments:
     char -- The ASCII char to write
-    offset_x -- Position the character along x
-    offset_y -- Position the character along y
+    offset_x -- Position the character along x (default 0)
+    offset_y -- Position the character along y (default 0)
 
     """
 
@@ -292,7 +292,7 @@ def scroll_vertical(amount=1):
     Will scroll one pixel vertically if no amount is supplied.
 
     Keyword arguments:
-    amount -- Amount to scroll along y axis
+    amount -- Amount to scroll along y axis (default 1)
 
     """
 
@@ -356,9 +356,13 @@ def draw_tiny(display, text):
     """
 
     _buf = []
-    for num in [int(x) for x in text]:
-        _buf += _tinynumbers[num]
-        _buf += [0] # Space
+    try:
+        for num in [int(x) for x in text]:
+            _buf += _tinynumbers[num]
+            _buf += [0] # Space
+
+    except ValueError:
+        raise ValueError("text should contain only numbers: '{text}'".format(text=text))
 
     for row in range(min(len(_buf),7)):
         data = _buf[row]
