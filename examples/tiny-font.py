@@ -5,6 +5,13 @@ import time
 from microdotphat import draw_tiny, show, clear
 
 
+print("""Tiny Font
+
+Displays an IP address in a tiny, tiny number font!
+
+Press Ctrl+C to exit.
+""")
+
 x = 0
 
 while True:

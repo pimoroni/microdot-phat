@@ -4,6 +4,12 @@ import time
 
 from microdotphat import HEIGHT, write_string, scroll_vertical, show
 
+print("""Vertical Text
+
+Scrolls text messages vertically.
+
+Press Ctrl+C to exit.
+""")
 
 lines = ['One', 'Two', 'Three', 'Four', 'Five']
 
