@@ -4,6 +4,12 @@ import time
 
 from microdotphat import clear, show, set_decimal, set_pixel, WIDTH, HEIGHT
 
+print("""Flash
+
+Flashes all the elements.
+
+Press Ctrl+C to exit.
+""")
 
 t = 0.5
 
