@@ -57,7 +57,7 @@ def clear():
 def fill(c):
     """Fill the buffer either lit or unlit
 
-    c -- Colour that should be filled onto the display: 1=lit or 0=unlit
+    :param c: Colour that should be filled onto the display: 1=lit or 0=unlit
     
     """
 
@@ -70,8 +70,7 @@ def set_clear_on_exit(value):
     Set this to false if you want to display a fixed message after
     your Python script exits.
 
-    Arguments:
-    value -- Whether the display should be cleared on exit: True/False
+    :param value: Whether the display should be cleared on exit: True/False
 
     """
 
@@ -81,8 +80,7 @@ def set_clear_on_exit(value):
 def set_rotate180(value):
     """Set whether the display should be rotated 180 degrees
 
-    Arguments:
-    value -- Whether the display should be rotated 180 degrees: True/False
+    :param value: Whether the display should be rotated 180 degrees: True/False
 
     """
 
@@ -94,8 +92,8 @@ def set_col(x, col):
 
     Only useful when not scrolling vertically
 
-    x -- Specify which column to set
-    col -- An 8-bit integer, the 7 least significant bits correspond to each row
+    :param x: Specify which column to set
+    :param col: An 8-bit integer, the 7 least significant bits correspond to each row
 
     """
 
@@ -107,10 +105,9 @@ def set_pixel(x, y, c):
 
     If the pixel falls outside the current buffer size, it will be grown auto_matically
 
-    Arguments:
-    x -- The x position of the pixel to set
-    y -- The y position of the pixel to set
-    c -- The colour to set: 1=lit or 0=unlit
+    :param x: The x position of the pixel to set
+    :param y: The y position of the pixel to set
+    :param c: The colour to set: 1=lit or 0=unlit
 
     """
 
@@ -127,10 +124,9 @@ def set_pixel(x, y, c):
 def write_char(char, offset_x=0, offset_y=0):
     """Write a single character to the buffer
 
-    Arguments:
-    char -- The ASCII char to write
-    offset_x -- Position the character along x (default 0)
-    offset_y -- Position the character along y (default 0)
+    :param char: The ASCII char to write
+    :param offset_x: Position the character along x (default 0)
+    :param offset_y: Position the character along y (default 0)
 
     """
 
@@ -157,9 +153,8 @@ def _get_char(char):
 def set_decimal(index, state):
     """Set the state of a _decimal point
 
-    Arguments:
-    index -- Index of _decimal from 0 to 5
-    state -- State to set: 1=lit or 0=unlit
+    :param index: Index of _decimal from 0 to 5
+    :param state: State to set: 1=lit or 0=unlit
 
     """
 
@@ -170,18 +165,15 @@ def set_decimal(index, state):
 def write_string(string, offset_x=0, offset_y=0, kerning=True):
     """Write a string to the buffer
 
-    Returns:
-    The length, in pixels, of the written string.
+    :returns: The length, in pixels, of the written string.
 
-    Arguments:
-    string -- The text string to write
+    :param string: The text string to write
 
-    Keyword arguments:
-    offset_x -- Position the text along x (default 0)
-    offset_y -- Position the text along y (default 0)
-    kerning -- Whether to kern the characters closely together or display one per matrix (default True)
+    :param offset_x: Position the text along x (default 0)
+    :param offset_y: Position the text along y (default 0)
+    :param kerning: Whether to kern the characters closely together or display one per matrix (default True)
 
-    Examples:
+    :Examples:
 
     Write a string to the buffer, aligning one character per dislay, This is
     ideal for displaying still messages up to 6 characters long:
@@ -232,11 +224,10 @@ def scroll(amount_x=0, amount_y=0):
 
     Will scroll by 1 pixel horizontall if no arguments are supplied.
 
-    Keyword arguments:
-    amount_x -- Amount to scroll along x axis (default 0)
-    amount_y -- Amount to scroll along y axis (default 0)
+    :param amount_x: Amount to scroll along x axis (default 0)
+    :param amount_y: Amount to scroll along y axis (default 0)
 
-    Examples:
+    :Examples:
 
     Scroll vertically:
 
@@ -264,9 +255,8 @@ def scroll(amount_x=0, amount_y=0):
 def scroll_to(position_x=0, position_y=0):
     """Scroll to a specific position
 
-    Keyword arguments:
-    position_x -- Desired position along x axis (default 0)
-    position_y -- Desired position along y axis (default 0)
+    :param position_x: Desired position along x axis (default 0)
+    :param position_y: Desired position along y axis (default 0)
     
     """
 
@@ -279,8 +269,7 @@ def scroll_horizontal(amount=1):
 
     Will scroll one pixel horizontally if no amount is supplied.
 
-    Keyword arguments:
-    amount -- Amount to scroll along x axis (default 1)
+    :param amount: Amount to scroll along x axis (default 1)
 
     """
 
@@ -291,8 +280,7 @@ def scroll_vertical(amount=1):
 
     Will scroll one pixel vertically if no amount is supplied.
 
-    Keyword arguments:
-    amount -- Amount to scroll along y axis (default 1)
+    :param amount: Amount to scroll along y axis (default 1)
 
     """
 
@@ -301,8 +289,7 @@ def scroll_vertical(amount=1):
 def set_brightness(brightness):
     """Set the display brightness
 
-    Arguments:
-    brightness -- Brightness to set, from 0 to 127
+    :param brightness: Brightness to set, from 0 to 127
 
     """
 
@@ -349,9 +336,8 @@ def draw_tiny(display, text):
     Useful for drawing things like IP addresses.
     Can sometimes fit up to 3 digits on a single matrix
 
-    Arguments:
-    display -- Index from 0 to 5 of display to target, determines buffer offset
-    text -- Number to display
+    :param display: Index from 0 to 5 of display to target, determines buffer offset
+    :param text: Number to display
 
     """
 
