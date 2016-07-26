@@ -176,18 +176,14 @@ def write_string(string, offset_x=0, offset_y=0, kerning=True):
     :Examples:
 
     Write a string to the buffer, aligning one character per dislay, This is
-    ideal for displaying still messages up to 6 characters long:
+    ideal for displaying still messages up to 6 characters long::
 
-    ```
-    microdotphat.write_string("Bilge!", kerning=False)
-    ```
+        microdotphat.write_string("Bilge!", kerning=False)
 
     Write a string to buffer, with the characters as close together as possible.
-    This is ideal for writing text which you intend to scroll:
+    This is ideal for writing text which you intend to scroll::
 
-    ```
-    microdotphat.write_string("Hello World!")
-    ```
+        microdotphat.write_string("Hello World!")
     
     """
  
@@ -229,17 +225,13 @@ def scroll(amount_x=0, amount_y=0):
 
     :Examples:
 
-    Scroll vertically:
+    Scroll vertically::
 
-    ```
-    microdotphat.scroll(amount_y=1)
-    ```
+       microdotphat.scroll(amount_y=1)
 
-    Scroll diagonally:
+    Scroll diagonally::
 
-    ```
-    microdotphat.scroll(amount_x=1,amount_y=1)
-    ```
+       microdotphat.scroll(amount_x=1,amount_y=1)
 
     """
 
