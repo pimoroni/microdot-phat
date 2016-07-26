@@ -2,25 +2,45 @@
 Micro Dot pHAT
 ==============
 
-Micro Dot pHAT is a "pHAT" sized matrix driver board for the Pi Zero. It's designed to drive up to
-six LTP-305HR (red) or LTP-305G (green) 5x7 matrix displays using three bi-directional matrix drivers.
+Welcome to the Micro Dot pHAT documentation. These pages will walk you through everything from your first steps with Micro Dot pHAT to the technical details you might need to write your own library.
 
-Micro Dot pHAT can have a total of 210 pixels, plus 6 decimal points.
+.. _section-getting-started:
 
-The brightness of the whole display can be varied for nighttime dimming or fading transition effects.
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Getting Started
 
-
-Library & Function Reference
-============================
-
-.. automodule:: microdotphat
-   :members:
+   getting-started/*
 
 
-Code Examples
-=============
+.. _section-function-reference:
 
-.. include:: examples.rst
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Function Reference
+   
+   reference/*
+
+
+.. _section-code-examples:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Code Examples
+
+   examples/*
+
+.. _section-technical:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Technical Details
+
+   technical/*
 
 
 Indices and tables
