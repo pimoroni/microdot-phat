@@ -6,9 +6,6 @@ can write text and icons for scrolling around the Micro Dot pHAT display.
 Methods are included for rotating and scrolling, plus writing text either
 kerned to one pixel spacing, or spaced to place one character per matrix.
 
-Examples & code: http://github.com/pimoroni/microdot-phat
-Product details: http://shop.pimoroni.com/products/microdot-phat
-
 """
 
 import atexit
