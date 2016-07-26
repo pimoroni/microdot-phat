@@ -1,24 +1,32 @@
-.. Micro Dot pHAT documentation master file, created by
-   sphinx-quickstart on Mon Jul 25 16:22:10 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+==============
+Micro Dot pHAT
+==============
 
-Micro Dot pHAT Documentation
+Micro Dot pHAT is a "pHAT" sized matrix driver board for the Pi Zero. It's designed to drive up to
+six LTP-305HR (red) or LTP-305G (green) 5x7 matrix displays using three bi-directional matrix drivers.
+
+Micro Dot pHAT can have a total of 210 pixels, plus 6 decimal points.
+
+The brightness of the whole display can be varied for nighttime dimming or fading transition effects.
+
+
+Library & Function Reference
 ============================
 
-Contents:
+.. automodule:: microdotphat
+   :members:
 
-.. toctree::
-   :maxdepth: 2
 
+Code Examples
+=============
+
+.. include:: examples.rst
 
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
-.. automodule:: microdotphat
-   :members:
+
