@@ -8,7 +8,9 @@ pkgfiles=( "build" "changes" "deb" "dsc" "tar.xz" )
 
 if [ $gettools == "yes" ]; then
     sudo apt-get update && sudo apt-get install build-essential debhelper devscripts dh-make dh-python
-    sudo apt-get install python-mock python-sphinx python-sphinx-rtd-theme python-all python-setuptools python3-all python3-setuptools
+    sudo apt-get install python-all python-setuptools python3-all python3-setuptools
+    sudo apt-get install python-mock python-sphinx python-sphinx-rtd-theme
+    sudo pip install Sphinx --upgrade && sudo pip install sphinx_rtd_theme --upgrade
 fi
 
 if [ $setup == "yes" ]; then
