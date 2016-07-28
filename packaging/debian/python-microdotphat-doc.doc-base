@@ -1,0 +1,10 @@
+Document: python-microdotphat
+Title: Pimoroni Micro Dot pHAT Documentation
+Author: Phil Howard <phil@pimoroni.com>
+Abstract: Documentation for the microdotphat Python API
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-microdotphat-doc/html/index.html
+Files: /usr/share/doc/python-microdotphat-doc/html/*
+
