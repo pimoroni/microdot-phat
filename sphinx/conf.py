@@ -25,7 +25,7 @@ import sphinx_rtd_theme
 
 import mock, sys
 
-MOCK_MODULES = ['smbus']
+MOCK_MODULES = ['smbus','numpy']
 for module_name in MOCK_MODULES:
     sys.modules[module_name] = mock.Mock()
 
