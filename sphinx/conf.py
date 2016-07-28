@@ -20,12 +20,16 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import mock
+import sys
+import site
+
+# Prompte /usr/local/lib to the front of sys.path
+sys.path.insert(0,site.getsitepackages()[0])
+
 import sphinx_rtd_theme
 
-
-import mock, sys
-
-MOCK_MODULES = ['smbus']
+MOCK_MODULES = ['smbus','numpy']
 for module_name in MOCK_MODULES:
     sys.modules[module_name] = mock.Mock()
 
@@ -143,7 +147,7 @@ html_theme = 'sphinx_rtd_theme'
 # html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['_themes',]
+html_theme_path = ['_themes',sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
