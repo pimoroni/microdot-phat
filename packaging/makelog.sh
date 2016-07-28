@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mainlog="CHANGELOG"
-debianlog="debian/changelog"
-pypilog="../library/CHANGELOG.txt"
+mainlog="CHANGELOG" # master log file
+debianlog="debian/changelog" # log generated for debian packaging
+pypilog="../library/CHANGELOG.txt" # log generated for pypi packaging
 
 # generate debian changelog
 
