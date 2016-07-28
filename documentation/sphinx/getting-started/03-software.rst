@@ -25,5 +25,5 @@ And to output it to the display::
 
     microdotphat.show()
 
-See the :doc:`Library Reference <reference>` for all the methods you'll need to make your first script come to life.
+See the :doc:`Library Reference </reference/python>` for all the methods you'll need to make your first script come to life.
 
