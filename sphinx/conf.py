@@ -22,6 +22,15 @@
 
 import sphinx_rtd_theme
 
+
+import mock, sys
+
+MOCK_MODULES = ['smbus']
+for module_name in MOCK_MODULES:
+    sys.modules[module_name] = mock.Mock()
+
+sys.path.insert(0, '../library/')
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
