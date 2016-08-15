@@ -86,9 +86,9 @@ def set_rotate180(value):
     _rotate180 = (value == True)
 
 def set_mirror(value):
-    """Set whether the display should be mirrored leftright 
+    """Set whether the display should be flipped left to right (mirrored)
 
-    :param value: Whether the display should be mirrored left to right: True/False
+    :param value: Whether the display should be flipped left to right: True/False
 
     """
 
