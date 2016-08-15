@@ -36,6 +36,7 @@ _scroll_y = 0
 
 _clear_on_exit = True
 _rotate180 = False
+_mirror = False
 
 def _exit():
     if _clear_on_exit:
@@ -84,6 +85,15 @@ def set_rotate180(value):
     global _rotate180
     _rotate180 = (value == True)
 
+def set_mirror(value):
+    """Set whether the display should be mirrored leftright 
+
+    :param value: Whether the display should be mirrored left to right: True/False
+
+    """
+
+    global _mirror
+    _mirror = (value == True)
 def set_col(x, col):
     """Set a whole column of the buffer
 
@@ -302,6 +312,9 @@ def show():
 
     if _rotate180:
         scrolled_buffer = numpy.rot90(scrolled_buffer[:7, :45], 2)
+
+    if _mirror:
+        scrolled_buffer = numpy.fliplr(scrolled_buffer[:7, :45])
 
     for m_x in range(6):
         x = (m_x * 8)
