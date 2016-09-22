@@ -278,12 +278,12 @@ def scroll_vertical(amount=1):
 def set_brightness(brightness):
     """Set the display brightness
 
-    :param brightness: Brightness to set, from 0 to 127
+    :param brightness: Brightness to set, from 0.0 to 1.0
 
     """
 
-    if brightness < 0 or brightness > 127:
-        raise ValueError("Brightness should be between 0 and 127")
+    if brightness < 0 or brightness > 1:
+        raise ValueError("Brightness should be between 0.0 and 1.0")
 
     for m_x in range(6):
         _mat[m_x][0].set_brightness(brightness)
