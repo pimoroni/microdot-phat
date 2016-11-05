@@ -5,6 +5,7 @@ import sys
              
 from microdotphat import write_string, scroll, show
 
+
 print("""Scrolling Text
 
 Scrolls a message across the screen.

@@ -3,7 +3,8 @@
 import math
 import time
 
-from microdotphat import clear, set_pixel, show 
+from microdotphat import clear, set_pixel, show
+
 
 print("""Sine Wave
 
