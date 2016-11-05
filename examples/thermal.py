@@ -5,6 +5,7 @@ import time
 
 from microdotphat import write_string, set_decimal, clear, show
 
+
 print("""Thermal
 
 Displays the temperature measured from thermal zone 0, using

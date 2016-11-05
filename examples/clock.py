@@ -5,6 +5,7 @@ import time
 
 from microdotphat import write_string, set_decimal, clear, show
 
+
 print("""Clock
 
 Displays the time in hours, minutes and seconds
