@@ -5,6 +5,7 @@ from random import randint
 
 from microdotphat import set_col, show, clear
 
+
 print("""Graph
 
 Plots random numbers scross the screen in a bar graph.

@@ -9,6 +9,7 @@ kerned to one pixel spacing, or spaced to place one character per matrix.
 """
 
 import atexit
+from sys import exit
 
 try:
     import numpy

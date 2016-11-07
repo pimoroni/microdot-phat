@@ -4,6 +4,7 @@ import time
 
 from microdotphat import HEIGHT, write_string, scroll_vertical, show
 
+
 print("""Vertical Text
 
 Scrolls text messages vertically.
