@@ -39,7 +39,7 @@ classifiers = ['Development Status :: 5 - Production/Stable',
 
 setup(
     name            = 'microdotphat',
-    version         = '0.1.2',
+    version         = '0.1.3',
     author          = 'Philip Howard',
     author_email    = 'phil@pimoroni.com',
     description     = 'Micro Dot pHAT Driver',
