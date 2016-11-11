@@ -1,3 +1,11 @@
+0.1.3
+-----
+
+* Added __version__ string to module
+* Added degrees symbol
+* Added mirroring: flip display left to right
+* Added DocStrings
+
 0.1.2
 -----
 
@@ -15,8 +23,6 @@
 
 * Vertical scrolling
 * Tweaks to write_string
-
- 
 
 0.0.1
 -----

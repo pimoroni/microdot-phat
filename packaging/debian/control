@@ -30,12 +30,12 @@ Description: python library designed to control Micro Dot pHAT.
  .
  This is the Python 3 version of the package.
 
-Package: python-microdotphat-doc
-Architecture: all
-Section: doc
-Depends: ${misc:Depends}, ${sphinxdoc:Depends}
-Description: Documentation for the microdotphat Python API
- The microdotphat python library is designed to control Micro Dot pHAT.
- This package installs the documentation for the API as an html contents tree.
- .
- This is the version independent documentation for the package.
+#Package: python-microdotphat-doc
+#Architecture: all
+#Section: doc
+#Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+#Description: Documentation for the microdotphat Python API
+# The microdotphat python library is designed to control Micro Dot pHAT.
+# This package installs the documentation for the API as an html contents tree.
+# .
+# This is the version independent documentation for the package.
