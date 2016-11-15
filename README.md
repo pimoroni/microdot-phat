@@ -6,6 +6,8 @@ An unashamedly old school LED matrix display board, with up to 30x7 pixels, usin
 
 ##Installation
 
+**Full install ( recommended ):**
+
 We've created a super-easy installation script that will install all pre-requisites and get your Micro Dot pHAT up and running in a jiffy. To run it fire up Terminal which you'll find in Menu -> Accessories -> Terminal on your Raspberry Pi desktop like so:
 
 ![Finding the terminal](terminal.jpg)
@@ -13,10 +15,38 @@ We've created a super-easy installation script that will install all pre-requisi
 In the new terminal window type:
 
 ```bash
-curl -sS get.pimoroni.com/microdotphat | bash
+curl -sS https://get.pimoroni.com/microdotphat | bash
 ```
 
-If you choose to download examples you'll find them in `/home/pi/Pimoroni/microdotphat/examples`.
+If you choose to download examples you'll find them in `/home/pi/Pimoroni/microdotphat/`.
+
+**Library install for Python 3:**
+
+on Raspbian:
+
+```bash
+sudo apt-get install python3-microdotphat
+```
+other environments: 
+
+```bash
+sudo pip3 install microdotphat
+```
+
+**Library install for Python 2:**
+
+on Raspbian:
+
+```bash
+sudo apt-get install python-microdotphat
+```
+other environments: 
+
+```bash
+sudo pip2 install microdotphat
+```
+
+In all cases you will have to enable the i2c bus.
 
 ##Usage
 
