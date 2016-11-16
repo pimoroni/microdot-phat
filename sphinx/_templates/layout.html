@@ -1,0 +1,75 @@
+{% extends "!layout.html" %}
+{% block extrahead %}
+	<link rel="stylesheet" href="{{ pathto("_static/custom.css", True) }}" type="text/css">
+{% endblock %}
+{% block menu %}
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+	<li class="toctree-l1"><a class="reference internal" href="/index.html#welcome">Welcome</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/index.html#module-mote">At A Glance</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.clear">Clear</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.draw_tiny">Draw Tiny</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.fill">Fill</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.scroll">Scroll</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.scroll_horizontal">Scroll Horizontal</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.scroll_to">Scroll To</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.scroll_vertical">Scroll Vertical</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_brightness">Set Brightness</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_clear_on_exit">Set Clear On Exit</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_col">Set Col</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_decimal">Set Decimal</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_mirror">Set Mirror</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_pixel">Set Pixel</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.set_rotate180">Set Rotate180</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.show">Show</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.write_char">Write Char</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/reference/python.html#microdotphat.write_string">Write String</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Hardware</span></p>
+<ul>
+	<li class="toctree-l1"><a class="reference internal" href="/technical/01-driver-pcb.html">Driver PCB</a></li>
+	<li class="toctree-l1"><a class="reference internal" href="/technical/02-led-matrix.html">LED Matrix</a></li>
+</ul>
+{% endblock %}
+{% block footer %}
+<script type="text/javascript">
+	var menuItems = $('.wy-menu-vertical').find('a');
+
+	var scrollItems = menuItems.map(function(){
+		var item = $($(this).attr('href'));
+		if (item.length) { return item; }
+	});
+
+	$(window).on('scroll',function(){
+		var fromTop = $(this).scrollTop()
+
+		var cur = scrollItems.map(function(){
+			if ($(this).offset().top < fromTop+30) return this;
+		});
+
+		cur = cur[cur.length-1];
+		var id = cur && cur.length ? cur[0].id : "";
+
+		var target = $('#'+id);
+		target.attr('id','');
+		window.location.hash = '#'+id;
+		target.attr('id',id);
+
+		menuItems
+			.parent().removeClass("current")
+			.end().filter("[href='#"+id+"']").parent().addClass("current");
+	});
+
+	$(window).on('hashchange',function(){
+
+		var hash = window.location.hash.replace('#','');
+
+		menuItems
+			.parent().removeClass("current")
+			.end().filter("[href='#"+hash+"']").parent().addClass("current");
+	})
+</script>
+{% endblock %}

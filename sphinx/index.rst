@@ -1,18 +1,17 @@
-==============
-Micro Dot pHAT
-==============
+Welcome
+-------
 
-Welcome to the Micro Dot pHAT documentation. These pages will walk you through everything from your first steps with Micro Dot pHAT to the technical details you might need to write your own library.
+* More information - https://shop.pimoroni.com/products/microdot-phat
+* Get the code - https://github.com/pimoroni/microdot-phat
+* Assembly - https://learn.pimoroni.com/tutorial/sandyj/assembling-micro-dot-phat
+* Getting started - https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-micro-dot-phat
+* Get help - http://forums.pimoroni.com/c/support
 
-.. _section-getting-started:
+At A Glance
+-----------
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Getting Started
-
-   getting-started/*
-
+.. automoduleoutline:: microdotphat
+   :members:
 
 .. _section-function-reference:
 
@@ -23,16 +22,6 @@ Welcome to the Micro Dot pHAT documentation. These pages will walk you through e
    
    reference/*
 
-
-.. _section-code-examples:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Code Examples
-
-   examples/*
-
 .. _section-technical:
 
 .. toctree::
@@ -41,12 +30,3 @@ Welcome to the Micro Dot pHAT documentation. These pages will walk you through e
    :caption: Technical Details
 
    technical/*
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
-
-
