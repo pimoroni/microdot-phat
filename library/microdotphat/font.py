@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 tinynumbers = [
     [0b11111,0b11111],
