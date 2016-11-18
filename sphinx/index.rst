@@ -11,8 +11,16 @@ Welcome
 At A Glance
 -----------
 
+.. raw:: html
+
+   <div>
+
 .. automoduleoutline:: microdotphat
    :members:
+
+.. raw:: html
+
+   </div>
 
 .. toctree::
    :hidden:
