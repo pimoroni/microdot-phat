@@ -2,6 +2,7 @@ Welcome
 -------
 
 * More information - https://shop.pimoroni.com/products/microdot-phat
+* GPIO pinout - https://pinout.xyz/pinout/micro_dot_phat
 * Get the code - https://github.com/pimoroni/microdot-phat
 * Assembly - https://learn.pimoroni.com/tutorial/sandyj/assembling-micro-dot-phat
 * Getting started - https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-micro-dot-phat
@@ -12,21 +13,3 @@ At A Glance
 
 .. automoduleoutline:: microdotphat
    :members:
-
-.. _section-function-reference:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Function Reference
-   
-   reference/*
-
-.. _section-technical:
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Technical Details
-
-   technical/*
