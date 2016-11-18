@@ -13,3 +13,10 @@ At A Glance
 
 .. automoduleoutline:: microdotphat
    :members:
+
+.. toctree::
+   :hidden:
+   :glob:
+
+   reference/*
+   technical/*
