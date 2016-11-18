@@ -6,10 +6,6 @@ import site
 import mock
 
 
-PACKAGE_NAME = u"Micro Dot pHAT"
-PACKAGE_HANDLE = "MicroDotpHAT"
-PACKAGE_MODULE = "microdotphat"
-
 # Prompte /usr/local/lib to the front of sys.path
 #sys.path.insert(0,site.getsitepackages()[0])
 
@@ -65,6 +61,15 @@ def setup(app):
     app.add_autodocumenter(ModuleOutlineDocumenter)
 
     ModuleOutlineDocumenter.objtype = 'module'
+
+import microdotphat
+
+PACKAGE_NAME = u"Micro Dot pHAT"
+PACKAGE_HANDLE = "MicroDotpHAT"
+PACKAGE_MODULE = "microdotphat"
+PACKAGE_VERSION = microdotphat.__version__
+
+suppress_warnings = ["app.add_directive"]
 
 # -- General configuration ------------------------------------------------
 
