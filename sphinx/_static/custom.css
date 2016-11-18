@@ -34,18 +34,18 @@ code.literal {
 }
 
 
-.rst-content #module-microdotphat {
+.rst-content #at-a-glance {
     margin-bottom:24px;
     padding-bottom:24px;
 }
-.rst-content #module-microdotphat dl:not(.docutils) dt {
+.rst-content #at-a-glance dl:not(.docutils) dt {
     border:none;
     background:#f0f0f0;
 }
-.rst-content #module-microdotphat dl:not(.docutils) dd, 
-.rst-content #module-microdotphat dl:not(.docutils) dd dl:not(.docutils) dd {
+.rst-content #at-a-glance dl:not(.docutils) dd,
+.rst-content #at-a-glance dl:not(.docutils) dd dl:not(.docutils) dd {
     display:none;
 }
-.rst-content #module-microdotphat dl:not(.docutils) {
+.rst-content #at-a-glance dl:not(.docutils) {
     margin-bottom:0;
 }
