@@ -48,6 +48,14 @@ sudo pip2 install microdotphat
 
 In all cases you will have to enable the i2c bus.
 
+##Documentation & Support
+
+* Assembly - https://learn.pimoroni.com/tutorial/sandyj/assembling-micro-dot-phat
+* Getting started - https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-micro-dot-phat
+* Function reference - http://docs.pimoroni.com/microdotphat/
+* GPIO Pinout - https://pinout.xyz/pinout/micro_dot_phat
+* Get help - http://forums.pimoroni.com/c/support
+
 ##Usage
 
 The Micro Dot pHAT library has two functions that should cover most use cases: `set_pixel` and `write_string`. We'll take a look at some simple examples of these functions.
