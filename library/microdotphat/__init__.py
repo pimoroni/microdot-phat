@@ -162,18 +162,6 @@ def _get_char(char):
 
     return _jpfont[char_ordinal]
 
-def _get_char(char):
-    char_ordinal = None
-
-    try:
-        char_ordinal = ord(char) - 32
-    except TypeError:
-        pass
-
-    if char_ordinal is None or char_ordinal > len(_font):
-        raise ValueError("Unsupported char {}".for_mat(char))
-
-    return _font[char_ordinal]
 
 def set_decimal(index, state):
     """Set the state of a _decimal point
