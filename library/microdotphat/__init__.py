@@ -16,7 +16,7 @@ try:
 except ImportError:
     exit("This library requires the numpy module\nInstall with: sudo pip install numpy")
 
-from .font import font as _font, tinynumbers as _tinynumbers
+from .font import font as _font, tinynumbers as _tinynumbers, jpfont as _jpfont
 from .matrix import NanoMatrix
 
 __version__ = '0.1.3'
@@ -145,6 +145,22 @@ def write_char(char, offset_x=0, offset_y=0):
         for y in range(7):
             p = (char[x] & (1 << y)) > 0
             set_pixel(offset_x + x, offset_y + y, p)
+
+def _get_char(char):
+    char_ordinal = None
+
+    try:
+        char_ordinal = ord(char)
+    except TypeError:
+        pass
+
+    if char_ordinal == 65374:
+        char_ordinal = 12316
+
+    if char_ordinal is None or char_ordinal not in _jpfont:
+        raise ValueError("Unsupported char {}".for_mat(char))
+
+    return _jpfont[char_ordinal]
 
 def _get_char(char):
     char_ordinal = None
