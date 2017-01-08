@@ -15,7 +15,7 @@ Usage: {name} "your message"
 Press Ctrl+C to exit.
 """.format(name=sys.argv[0]))
 
-text = "にほんこ゛ ヘ゜ロヘ゜ロ ＯＩＳＨＩＩＹＯ！！！"
+text = u"にほんこ゛ ヘ゜ロヘ゜ロ ＯＩＳＨＩＩＹＯ！！！"
 
 if len(sys.argv) > 1:
     text = sys.argv[1]
