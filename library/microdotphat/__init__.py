@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """A library for driving the Pimoroni Micro Dot pHAT Raspberry Pi add-on.
 
 This library creates a virtual buffer of unlimited size onto which you
