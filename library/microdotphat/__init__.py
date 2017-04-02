@@ -18,7 +18,7 @@ try:
 except ImportError:
     exit("This library requires the numpy module\nInstall with: sudo pip install numpy")
 
-from .font import font as _font, tinynumbers as _tinynumbers, jpfont as _jpfont
+from .font import font as _font, tinynumbers as _tinynumbers
 from .matrix import NanoMatrix
 
 __version__ = '0.1.3'
@@ -159,10 +159,10 @@ def _get_char(char):
     if char_ordinal == 65374:
         char_ordinal = 12316
 
-    if char_ordinal is None or char_ordinal not in _jpfont:
+    if char_ordinal is None or char_ordinal not in _font:
         raise ValueError("Unsupported char {}".for_mat(char))
 
-    return _jpfont[char_ordinal]
+    return _font[char_ordinal]
 
 
 def set_decimal(index, state):
