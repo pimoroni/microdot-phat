@@ -1,5 +1,5 @@
 ![Micro Dot pHAT](microdot-phat-logo.png)
-https://shop.pimoroni.com/products/micro-dot-phat
+https://shop.pimoroni.com/products/microdot-phat
 
 Micro Dot pHAT is an unashamedly old school LED matrix display board, with up to 30x7 pixels, using the Lite-On LTP-305 matrices. Perfect for building a retro scrolling message display or a tiny 30 band spectrum analyser.
 
