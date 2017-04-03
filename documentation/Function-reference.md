@@ -1,22 +1,10 @@
-<!--
----
-title: Micro Dot pHAT Python Function Reference
-handle: micro-dot-phat-python-function-reference
-type: tutorial
-summary: A reference for Micro Dot pHAT's Python library
-author: Phil Howard
-products: [micro-dot-phat]
-tags: [Micro Dot pHAT, Raspberry Pi, Python, Programming]
-images: [images/tba.png]
-difficulty: Beginner
--->
 # Micro Dot pHAT Function Reference
 
 The Micro Dot pHAT library has two functions that should cover most use cases: `set_pixel` and `write_string`. We'll take a look at some simple examples of these functions.
 
 The width of each matrix is 8x7 pixels, with the last 3 of those pixels being "imaginary" ones to correct for the gap between adjacent matrices so, if you're using all 6 displays, the total width will be 45x7 pixels.
 
-###set_pixel
+## set_pixel
 
 You can light up the top left pixel of the display second from the left by doing the following:
 
@@ -46,7 +34,7 @@ for x in range(HEIGHT):
 update()
 ```
 
-###write_string and scroll
+## write_string and scroll
 
 The `write_string` and `scroll` functions provide a really simple way to scroll text across the Micro Dot matrices. We'll look at the `scrolling-text.py` example.
 
@@ -74,6 +62,6 @@ If we called `update` now, that text would be written to the matrices, but we al
 
 `time.sleep(0.05)` adds a small delay between each iteration and hence sets the scroll speed. Decreasing this value (in seconds) would increase the scroll speed and _vice versa_.
 
-##Examples
+## Examples
 
 There are a number of examples in the Examples folder that illustrate the above concepts.
