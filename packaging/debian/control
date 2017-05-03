@@ -13,7 +13,7 @@ Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python:Depends}, python-smbus, python-numpy
 Suggests: i2c-tools
-Description: python library designed to control Micro Dot pHAT.
+Description: Python library for the Pimoroni Micro Dot pHAT.
  The Micro Dot pHAT is an unashamedly old school LED matrix display board,
  with up to 30x7 pixels, using the Lite-On LTP-305 matrices.
  .
@@ -24,7 +24,7 @@ Architecture: all
 Section: python
 Depends: ${misc:Depends}, ${python3:Depends}, python3-smbus, python3-numpy
 Suggests: i2c-tools
-Description: python library designed to control Micro Dot pHAT.
+Description: Python library for the Pimoroni Micro Dot pHAT.
  The Micro Dot pHAT is an unashamedly old school LED matrix display board,
  with up to 30x7 pixels, using the Lite-On LTP-305 matrices.
  .
