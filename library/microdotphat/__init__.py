@@ -89,6 +89,7 @@ def set_mirror(value):
 
     global _mirror
     _mirror = (value == True)
+
 def set_col(x, col):
     """Set a whole column of the buffer
 
