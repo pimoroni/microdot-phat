@@ -27,7 +27,7 @@ _n3 = NanoMatrix(address=0x61)
 
 _mat = [(_n1, 1), (_n1, 0), (_n2, 1), (_n2, 0), (_n3, 1), (_n3, 0)]
 
-WIDTH = 45
+WIDTH = 48
 HEIGHT = 7
 
 _buf = numpy.zeros((HEIGHT,WIDTH))
@@ -52,7 +52,7 @@ def clear():
 
     global _buf, _decimal
     _decimal = [0] * 6
-    _buf.fill(0)
+    _buf = numpy.zeros((HEIGHT,WIDTH))
 
 def fill(c):
     """Fill the buffer either lit or unlit
