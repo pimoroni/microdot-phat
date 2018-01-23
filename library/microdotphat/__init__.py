@@ -45,7 +45,7 @@ def clear():
 
     global _buf, _decimal
     _decimal = [0] * 6
-    _buf.fill(0)
+    _buf = numpy.zeros((HEIGHT,WIDTH))
 
 def fill(c):
     """Fill the buffer either lit or unlit
