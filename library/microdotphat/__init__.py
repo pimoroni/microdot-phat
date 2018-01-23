@@ -215,6 +215,11 @@ def write_string(string, offset_x=0, offset_y=0, kerning=True):
             str_buf += list(char_data)
         str_buf += gap # Gap between chars
 
+
+    if not kerning:
+        while len(str_buf) < WIDTH + 3:
+            str_buf += [0x00]
+
     for x in range(len(str_buf)):
         for y in range(7):
             p = (str_buf[x] & (1 << y)) > 0
