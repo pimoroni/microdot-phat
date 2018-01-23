@@ -14,22 +14,17 @@ from sys import exit
 try:
     import numpy
 except ImportError:
-    exit("This library requires the numpy module\nInstall with: sudo pip install numpy")
+    raise ImportError("This library requires the numpy module\nInstall with: sudo pip install numpy")
 
 from .font import font as _font, tinynumbers as _tinynumbers
 from .matrix import NanoMatrix
 
 __version__ = '0.1.3'
 
-_n1 = NanoMatrix(address=0x63)
-_n2 = NanoMatrix(address=0x62)
-_n3 = NanoMatrix(address=0x61)
-
-_mat = [(_n1, 1), (_n1, 0), (_n2, 1), (_n2, 0), (_n3, 1), (_n3, 0)]
-
 WIDTH = 45
 HEIGHT = 7
 
+_is_setup = False
 _buf = numpy.zeros((HEIGHT,WIDTH))
 _decimal = [0] * 6
 
@@ -44,8 +39,6 @@ def _exit():
     if _clear_on_exit:
         clear()
         show()
-
-atexit.register(_exit)
 
 def clear():
     """Clear the buffer"""
@@ -96,6 +89,7 @@ def set_mirror(value):
 
     global _mirror
     _mirror = (value == True)
+
 def set_col(x, col):
     """Set a whole column of the buffer
 
@@ -308,6 +302,8 @@ def show():
 
     """
 
+    setup()
+
     scrolled_buffer = numpy.copy(_buf)
     scrolled_buffer = numpy.roll(scrolled_buffer, -_scroll_x, axis=1)
     scrolled_buffer = numpy.roll(scrolled_buffer, -_scroll_y, axis=0)
@@ -362,4 +358,20 @@ def draw_tiny(display, text):
 
         for d in range(5):
             set_pixel(offset_x+(4-d), offset_y, (data & (1 << d)) > 0)
+
+def setup():
+    global _is_setup, _n1, _n2, _n3, _mat
+
+    if _is_setup:
+        return True
+
+    _n1 = NanoMatrix(address=0x63)
+    _n2 = NanoMatrix(address=0x62)
+    _n3 = NanoMatrix(address=0x61)
+
+    _mat = [(_n1, 1), (_n1, 0), (_n2, 1), (_n2, 0), (_n3, 1), (_n3, 0)]
+
+    atexit.register(_exit)
+
+    _is_setup = True
 
