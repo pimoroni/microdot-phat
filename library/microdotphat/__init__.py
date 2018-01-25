@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """A library for driving the Pimoroni Micro Dot pHAT Raspberry Pi add-on.
 
 This library creates a virtual buffer of unlimited size onto which you
@@ -144,14 +146,18 @@ def _get_char(char):
     char_ordinal = None
 
     try:
-        char_ordinal = ord(char) - 32
+        char_ordinal = ord(char)
     except TypeError:
         pass
 
-    if char_ordinal is None or char_ordinal > len(_font):
+    if char_ordinal == 65374:
+        char_ordinal = 12316
+
+    if char_ordinal is None or char_ordinal not in _font:
         raise ValueError("Unsupported char {}".for_mat(char))
 
     return _font[char_ordinal]
+
 
 def set_decimal(index, state):
     """Set the state of a _decimal point
