@@ -108,7 +108,7 @@ def set_col(x, col):
 def set_pixel(x, y, c):
     """Set the state of a single pixel in the buffer
 
-    If the pixel falls outside the current buffer size, it will be grown auto_matically
+    If the pixel falls outside the current buffer size, it will be grown automatically
 
     :param x: The x position of the pixel to set
     :param y: The y position of the pixel to set
@@ -154,7 +154,7 @@ def _get_char(char):
         char_ordinal = 12316
 
     if char_ordinal is None or char_ordinal not in _font:
-        raise ValueError("Unsupported char {}".for_mat(char))
+        raise ValueError("Unsupported char {}".format(char))
 
     return _font[char_ordinal]
 
