@@ -48,6 +48,8 @@ def clear():
     global _buf, _decimal
     _decimal = [0] * 6
     _buf = numpy.zeros((HEIGHT,WIDTH))
+    _scroll_x = 0
+    _scroll_y = 0
 
 def fill(c):
     """Fill the buffer either lit or unlit
@@ -117,6 +119,9 @@ def set_pixel(x, y, c):
     """
 
     global _buf
+
+    c = 1 if c else 0
+
     try:
         _buf[y][x] = c
     except IndexError:
