@@ -1,3 +1,11 @@
+microdotphat (0.2.0) stable; urgency=low
+
+  * BugFix: Defer setup to avoid import side effects
+  * BugFix: Reset scroll X and Y to zero when cleared
+  * Feature: Added Japanese text support
+
+ -- Phil Howard <phil@pimoroni.com>  Wed, 14 Mar 2018 00:00:00 +0000
+
 microdotphat (0.1.3) stable; urgency=low
 
   * Added __version__ string to module

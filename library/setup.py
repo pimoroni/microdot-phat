@@ -39,11 +39,11 @@ classifiers = ['Development Status :: 5 - Production/Stable',
 
 setup(
     name            = 'microdotphat',
-    version         = '0.1.3',
+    version         = '0.2.0',
     author          = 'Philip Howard',
     author_email    = 'phil@pimoroni.com',
     description     = 'Micro Dot pHAT Driver',
-    long_description= open('README.txt').read() + open('CHANGELOG.txt').read(),
+    long_description= open('README.rst').read() + "\n" + open('CHANGELOG.txt').read(),
     license         = 'MIT',
     keywords        = 'Raspberry Pi IoT Displays LCD LED',
     url             = 'http://www.pimoroni.com',

@@ -1,3 +1,10 @@
+0.2.0
+-----
+
+* BugFix: Defer setup to avoid import side effects
+* BugFix: Reset scroll X and Y to zero when cleared
+* Feature: Added Japanese text support
+
 0.1.3
 -----
 
