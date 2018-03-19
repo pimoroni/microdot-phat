@@ -1,3 +1,8 @@
+0.2.1
+-----
+
+* BugFix: Call setup within set_brightness, fixes #20
+
 0.2.0
 -----
 

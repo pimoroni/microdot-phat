@@ -21,7 +21,7 @@ except ImportError:
 from .font import font as _font, tinynumbers as _tinynumbers
 from .matrix import NanoMatrix
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 WIDTH = 45
 HEIGHT = 7
@@ -303,6 +303,8 @@ def set_brightness(brightness):
     :param brightness: Brightness to set, from 0.0 to 1.0
 
     """
+
+    setup()
 
     if brightness < 0 or brightness > 1:
         raise ValueError("Brightness should be between 0.0 and 1.0")

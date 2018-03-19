@@ -1,3 +1,9 @@
+microdotphat (0.2.1) stable; urgency=low
+
+  * BugFix: Call setup within set_brightness, fixes #20
+
+ -- Phil Howard <phil@pimoroni.com>  Mon, 19 Mar 2018 00:00:00 +0000
+
 microdotphat (0.2.0) stable; urgency=low
 
   * BugFix: Defer setup to avoid import side effects
