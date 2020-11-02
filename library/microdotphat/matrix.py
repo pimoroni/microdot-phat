@@ -1,16 +1,7 @@
-from sys import exit, version_info
-
-
 try:
-    from smbus import SMBus
-except ImportError as e:
-    try:
-        from smbus2 import SMBus
-    except ImportError as e2:
-        if version_info[0] < 3:
-            exit("This library requires python-smbus or smbus2\nInstall with: sudo apt-get install python-smbus")
-        elif version_info[0] == 3:
-            exit("This library requires python3-smbus or smbus2\nInstall with: sudo apt-get install python3-smbus")
+    from smbus2 import SMBus
+except ImportError:
+    raise RuntimeError("This library requires smbus2\nInstall with: pip install smbus2")
 
 
 ADDR = 0x61
