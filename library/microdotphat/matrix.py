@@ -1,12 +1,7 @@
-from sys import exit, version_info
-
 try:
-    import smbus
+    from smbus2 import SMBus
 except ImportError:
-    if version_info[0] < 3:
-        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
-    elif version_info[0] == 3:
-        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
+    raise RuntimeError("This library requires smbus2\nInstall with: pip install smbus2")
 
 
 ADDR = 0x61
@@ -58,7 +53,7 @@ class NanoMatrix:
         self.address = address
         self._brightness = 127
 
-        self.bus = smbus.SMBus(1)
+        self.bus = SMBus(1)
 
         self.bus.write_byte_data(self.address, CMD_MODE, MODE)
         self.bus.write_byte_data(self.address, CMD_OPTIONS, OPTS)
@@ -66,6 +61,15 @@ class NanoMatrix:
 
         self._BUF_MATRIX_1 = [0] * 8
         self._BUF_MATRIX_2 = [0] * 8
+
+    @staticmethod
+    def is_connected(address=0x61):
+        bus = SMBus(1)
+        try:
+            bus.write_byte(address, 0)
+            return True
+        except:  # exception if write_byte fails, meaning the device isn't connected
+            return False
 
     def set_brightness(self, brightness):
         self._brightness = int(brightness * 127)
@@ -77,7 +81,7 @@ class NanoMatrix:
 
         if m == MATRIX_1:
            if c == 1:
-               self._BUF_MATRIX_1[6] |= 0b10000000    
+               self._BUF_MATRIX_1[6] |= 0b10000000
            else:
                self._BUF_MATRIX_1[6] &= 0b01111111
 
