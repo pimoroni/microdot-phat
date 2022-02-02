@@ -61,6 +61,14 @@ def fill(c):
     global _buf
     _buf.fill(c)
 
+
+def is_connected():
+    """ Check if a microdot pHat is connected by trying to reach it over I2C.
+    Returns True if detected, False if not detected.
+    """
+    return NanoMatrix.is_connected(0x61) and NanoMatrix.is_connected(0x62) and NanoMatrix.is_connected(0x63)
+
+
 def set_clear_on_exit(value):
     """Set whether the display should be cleared on exit
 
