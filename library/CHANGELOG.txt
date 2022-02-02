@@ -1,3 +1,10 @@
+0.2.2
+-----
+
+* BugFix: Reset scroll X and Y to zero when cleared - The Sequel
+* Switch to smbus2 for i2c back-end
+* Feature: add `is_connected` to check for presence of HAT
+
 0.2.1
 -----
 

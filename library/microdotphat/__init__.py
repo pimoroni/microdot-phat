@@ -20,7 +20,7 @@ except ImportError:
 from .font import font as _font, tinynumbers as _tinynumbers
 from .matrix import NanoMatrix
 
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 WIDTH = 45
 HEIGHT = 7
