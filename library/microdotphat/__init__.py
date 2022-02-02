@@ -11,7 +11,6 @@ kerned to one pixel spacing, or spaced to place one character per matrix.
 """
 
 import atexit
-from sys import exit
 
 try:
     import numpy
@@ -27,7 +26,7 @@ WIDTH = 45
 HEIGHT = 7
 
 _is_setup = False
-_buf = numpy.zeros((HEIGHT,WIDTH))
+_buf = numpy.zeros((HEIGHT, WIDTH))
 _decimal = [0] * 6
 
 _scroll_x = 0
@@ -37,29 +36,40 @@ _clear_on_exit = True
 _rotate180 = False
 _mirror = False
 
+
 def _exit():
     if _clear_on_exit:
         clear()
         show()
 
+
 def clear():
     """Clear the buffer"""
 
-    global _buf, _decimal
+    global _buf, _decimal, _scroll_x, _scroll_y
     _decimal = [0] * 6
-    _buf = numpy.zeros((HEIGHT,WIDTH))
+    _buf = numpy.zeros((HEIGHT, WIDTH))
     _scroll_x = 0
     _scroll_y = 0
+
 
 def fill(c):
     """Fill the buffer either lit or unlit
 
     :param c: Colour that should be filled onto the display: 1=lit or 0=unlit
-    
+
     """
 
     global _buf
     _buf.fill(c)
+
+
+def is_connected():
+    """ Check if a microdot pHat is connected by trying to reach it over I2C.
+    Returns True if detected, False if not detected.
+    """
+    return NanoMatrix.is_connected(0x61) and NanoMatrix.is_connected(0x62) and NanoMatrix.is_connected(0x63)
+
 
 def set_clear_on_exit(value):
     """Set whether the display should be cleared on exit
@@ -72,7 +82,8 @@ def set_clear_on_exit(value):
     """
 
     global _clear_on_exit
-    _clear_on_exit = (value == True)
+    _clear_on_exit = True if value else False
+
 
 def set_rotate180(value):
     """Set whether the display should be rotated 180 degrees
@@ -82,7 +93,8 @@ def set_rotate180(value):
     """
 
     global _rotate180
-    _rotate180 = (value == True)
+    _rotate180 = True if value else False
+
 
 def set_mirror(value):
     """Set whether the display should be flipped left to right (mirrored)
@@ -92,7 +104,8 @@ def set_mirror(value):
     """
 
     global _mirror
-    _mirror = (value == True)
+    _mirror = True if value else False
+
 
 def set_col(x, col):
     """Set a whole column of the buffer
@@ -106,6 +119,7 @@ def set_col(x, col):
 
     for y in range(7):
         set_pixel(x, y, (col & (1 << y)) > 0)
+
 
 def set_pixel(x, y, c):
     """Set the state of a single pixel in the buffer
@@ -126,10 +140,11 @@ def set_pixel(x, y, c):
         _buf[y][x] = c
     except IndexError:
         if y >= _buf.shape[0]:
-            _buf = numpy.pad(_buf, ((0,y - _buf.shape[0] + 1),(0,0)), mode='constant')
+            _buf = numpy.pad(_buf, ((0, y - _buf.shape[0] + 1), (0, 0)), mode='constant')
         if x >= _buf.shape[1]:
-            _buf = numpy.pad(_buf, ((0,0),(0,x - _buf.shape[1] + 1)), mode='constant')
+            _buf = numpy.pad(_buf, ((0, 0), (0, x - _buf.shape[1] + 1)), mode='constant')
         _buf[y][x] = c
+
 
 def write_char(char, offset_x=0, offset_y=0):
     """Write a single character to the buffer
@@ -146,6 +161,7 @@ def write_char(char, offset_x=0, offset_y=0):
         for y in range(7):
             p = (char[x] & (1 << y)) > 0
             set_pixel(offset_x + x, offset_y + y, p)
+
 
 def _get_char(char):
     char_ordinal = None
@@ -176,6 +192,7 @@ def set_decimal(index, state):
     if index in range(6):
         _decimal[index] = 1 if state else 0
 
+
 def write_string(string, offset_x=0, offset_y=0, kerning=True):
     """Write a string to the buffer
 
@@ -198,9 +215,9 @@ def write_string(string, offset_x=0, offset_y=0, kerning=True):
     This is ideal for writing text which you intend to scroll::
 
         microdotphat.write_string("Hello World!")
-    
+
     """
- 
+
     str_buf = []
 
     space = [0x00] * 5
@@ -218,8 +235,7 @@ def write_string(string, offset_x=0, offset_y=0, kerning=True):
             if kerning:
                 char_data = numpy.trim_zeros(char_data)
             str_buf += list(char_data)
-        str_buf += gap # Gap between chars
-
+        str_buf += gap  # Gap between chars
 
     if not kerning:
         while len(str_buf) < WIDTH + 3:
@@ -230,9 +246,10 @@ def write_string(string, offset_x=0, offset_y=0, kerning=True):
             p = (str_buf[x] & (1 << y)) > 0
             set_pixel(offset_x + x, offset_y + y, p)
 
-    l = len(str_buf)
+    length = len(str_buf)
     del str_buf
-    return l
+    return length
+
 
 def scroll(amount_x=0, amount_y=0):
     """Scroll the buffer
@@ -263,17 +280,19 @@ def scroll(amount_x=0, amount_y=0):
     _scroll_x %= _buf.shape[1]
     _scroll_y %= _buf.shape[0]
 
+
 def scroll_to(position_x=0, position_y=0):
     """Scroll to a specific position
 
     :param position_x: Desired position along x axis (default 0)
     :param position_y: Desired position along y axis (default 0)
-    
+
     """
 
     global _scroll_x, _scroll_y
     _scroll_x = position_x % _buf.shape[1]
     _scroll_y = position_y % _buf.shape[0]
+
 
 def scroll_horizontal(amount=1):
     """Scroll horizontally (along x)
@@ -286,6 +305,7 @@ def scroll_horizontal(amount=1):
 
     scroll(amount_x=amount, amount_y=0)
 
+
 def scroll_vertical(amount=1):
     """Scroll vertically (along y)
 
@@ -296,6 +316,7 @@ def scroll_vertical(amount=1):
     """
 
     scroll(amount_x=0, amount_y=amount)
+
 
 def set_brightness(brightness):
     """Set the display brightness
@@ -311,6 +332,7 @@ def set_brightness(brightness):
 
     for m_x in range(6):
         _mat[m_x][0].set_brightness(brightness)
+
 
 def show():
     """Output the buffer to the display
@@ -334,19 +356,21 @@ def show():
 
     for m_x in range(6):
         x = (m_x * 8)
-        b = scrolled_buffer[0:7, x:x+5]
+        b = scrolled_buffer[0:7, x:x + 5]
 
         _mat[m_x][0].set_decimal(_mat[m_x][1], _decimal[m_x])
 
         for x in range(5):
             for y in range(7):
-                 try:
-                     _mat[m_x][0].set_pixel(_mat[m_x][1], x, y, b[y][x])
-                 except IndexError:
-                     pass # Buffer doesn't span this matrix yet
+                try:
+                    _mat[m_x][0].set_pixel(_mat[m_x][1], x, y, b[y][x])
+                except IndexError:
+                    pass  # Buffer doesn't span this matrix yet
         del b
-    for m_x in range(0,6,2):
+
+    for m_x in range(0, 6, 2):
         _mat[m_x][0].update()
+
 
 def draw_tiny(display, text):
     """Draw tiny numbers to the buffer
@@ -363,19 +387,20 @@ def draw_tiny(display, text):
     try:
         for num in [int(x) for x in text]:
             _buf += _tinynumbers[num]
-            _buf += [0] # Space
+            _buf += [0]  # Space
 
     except ValueError:
         raise ValueError("text should contain only numbers: '{text}'".format(text=text))
 
-    for row in range(min(len(_buf),7)):
+    for row in range(min(len(_buf), 7)):
         data = _buf[row]
 
         offset_x = display * 8
-        offset_y = 6-(row % 7)
+        offset_y = 6 - (row % 7)
 
         for d in range(5):
-            set_pixel(offset_x+(4-d), offset_y, (data & (1 << d)) > 0)
+            set_pixel(offset_x + (4 - d), offset_y, (data & (1 << d)) > 0)
+
 
 def setup():
     global _is_setup, _n1, _n2, _n3, _mat
@@ -392,4 +417,3 @@ def setup():
     atexit.register(_exit)
 
     _is_setup = True
-

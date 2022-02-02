@@ -1,17 +1,12 @@
-from sys import exit, version_info
-
 try:
-    import smbus
+    from smbus2 import SMBus
 except ImportError:
-    if version_info[0] < 3:
-        exit("This library requires python-smbus\nInstall with: sudo apt-get install python-smbus")
-    elif version_info[0] == 3:
-        exit("This library requires python3-smbus\nInstall with: sudo apt-get install python3-smbus")
+    raise RuntimeError("This library requires smbus2\nInstall with: pip install smbus2")
 
 
 ADDR = 0x61
 MODE = 0b00011000
-OPTS = 0b00001110 # 1110 = 35mA, 0000 = 40mA
+OPTS = 0b00001110  # 1110 = 35mA, 0000 = 40mA
 
 CMD_BRIGHTNESS = 0x19
 CMD_MODE = 0x00
@@ -24,8 +19,9 @@ CMD_MATRIX_2 = 0x0E
 MATRIX_1 = 0
 MATRIX_2 = 1
 
+
 class NanoMatrix:
-    '''        
+    '''
     _BUF_MATRIX_1 = [ # Green
 #Col   1 2 3 4 5
     0b00000000, # Row 1
@@ -58,7 +54,7 @@ class NanoMatrix:
         self.address = address
         self._brightness = 127
 
-        self.bus = smbus.SMBus(1)
+        self.bus = SMBus(1)
 
         self.bus.write_byte_data(self.address, CMD_MODE, MODE)
         self.bus.write_byte_data(self.address, CMD_OPTIONS, OPTS)
@@ -67,28 +63,38 @@ class NanoMatrix:
         self._BUF_MATRIX_1 = [0] * 8
         self._BUF_MATRIX_2 = [0] * 8
 
+    @staticmethod
+    def is_connected(address=0x61):
+        bus = SMBus(1)
+        try:
+            bus.write_byte(address, 0)
+            return True
+        except (IOError, OSError):  # exception if write_byte fails, meaning the device isn't connected
+            return False
+
     def set_brightness(self, brightness):
         self._brightness = int(brightness * 127)
-        if self._brightness > 127: self._brightness = 127
+        if self._brightness > 127:
+            self._brightness = 127
 
         self.bus.write_byte_data(self.address, CMD_BRIGHTNESS, self._brightness)
 
     def set_decimal(self, m, c):
 
         if m == MATRIX_1:
-           if c == 1:
-               self._BUF_MATRIX_1[6] |= 0b10000000    
-           else:
-               self._BUF_MATRIX_1[6] &= 0b01111111
+            if c == 1:
+                self._BUF_MATRIX_1[6] |= 0b10000000
+            else:
+                self._BUF_MATRIX_1[6] &= 0b01111111
 
         elif m == MATRIX_2:
 
-           if c == 1:
-               self._BUF_MATRIX_2[7] |= 0b01000000
-           else:
-               self._BUF_MATRIX_2[7] &= 0b10111111
+            if c == 1:
+                self._BUF_MATRIX_2[7] |= 0b01000000
+            else:
+                self._BUF_MATRIX_2[7] &= 0b10111111
 
-        #self.update()
+        # self.update()
 
     def set(self, m, data):
         for y in range(7):
@@ -96,7 +102,7 @@ class NanoMatrix:
 
     def set_row(self, m, r, data):
         for x in range(5):
-            self.set_pixel(m, x, r, (data & (1 << (4-x))) > 0)
+            self.set_pixel(m, x, r, (data & (1 << (4 - x))) > 0)
 
     def set_col(self, m, c, data):
         for y in range(7):
@@ -115,7 +121,7 @@ class NanoMatrix:
             else:
                 self._BUF_MATRIX_2[x] &= ~(0b1 << y)
 
-        #self.update()
+        # self.update()
 
     def clear(self, m):
         if m == MATRIX_1:
@@ -144,7 +150,7 @@ if __name__ == "__main__":
     m2 = NanoMatrix(address=0x62)
     m3 = NanoMatrix(address=0x61)
 
-    def clear_matrix(n,m):
+    def clear_matrix(n, m):
         for y in range(7):
             for x in range(5):
                 n.set_pixel(m, x, y, 0)
@@ -154,7 +160,7 @@ if __name__ == "__main__":
         n.update()
         time.sleep(0.05)
 
-    def fill_matrix(n,m):
+    def fill_matrix(n, m):
         for y in range(7):
             for x in range(5):
                 n.set_pixel(m, x, y, 1)
@@ -165,11 +171,11 @@ if __name__ == "__main__":
         time.sleep(0.05)
 
     while True:
-        for n in [m1,m2,m3]:
-            fill_matrix(n,MATRIX_2)
-            fill_matrix(n,MATRIX_1)
+        for n in [m1, m2, m3]:
+            fill_matrix(n, MATRIX_2)
+            fill_matrix(n, MATRIX_1)
         time.sleep(0.1)
-        for n in [m1,m2,m3]:
-            clear_matrix(n,MATRIX_2)
-            clear_matrix(n,MATRIX_1)
+        for n in [m1, m2, m3]:
+            clear_matrix(n, MATRIX_2)
+            clear_matrix(n, MATRIX_1)
         time.sleep(0.1)
