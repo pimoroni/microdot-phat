@@ -79,3 +79,4 @@ In all cases you will have to enable the i2c bus.
 ## Unofficial / Third-party libraries
 
 * Java library by Jim Darby - https://github.com/hackerjimbo/PiJava
+* Go library by Casey Mulcahy - https://github.com/jangler/microdotphat-go
